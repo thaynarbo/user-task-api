@@ -8,31 +8,17 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
-  private readonly _include = {
-    tasks: {
-      select: {
-        id: true,
-        description: true,
-      },
-    },
-  };
   create(dto: CreateUserDto) {
     const data: Prisma.UserCreateInput = {
       ...dto,
-      tasks: {
-        create: dto.tasks,
-      },
     };
     return this.prisma.user.create({
       data,
-      include: this._include,
     });
   }
 
   findAll() {
-    return this.prisma.user.findMany({
-      include: this._include,
-    });
+    return this.prisma.user.findMany({});
   }
 
   findOne(id: number) {
@@ -44,15 +30,11 @@ export class UserService {
   update(id: number, dto: UpdateUserDto) {
     const data: Prisma.UserUpdateInput = {
       ...dto,
-      tasks: {
-        create: dto.tasks,
-      },
     };
 
     return this.prisma.user.update({
       where: { id },
       data,
-      include: this._include,
     });
   }
 

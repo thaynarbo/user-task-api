@@ -15,10 +15,4 @@ export class CreateUserDto implements User {
   @IsNotEmpty()
   @Length(1, 40)
   name: string;
-
-  @ValidateNested({ each: true })
-  @Type(() => CreateTaskDto)
-  @IsArray()
-  @IsOptional()
-  tasks?: CreateTaskDto[];
 }
