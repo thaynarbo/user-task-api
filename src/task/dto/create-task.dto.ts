@@ -13,6 +13,7 @@ export class CreateTaskDto extends Task {
   @IsNotEmpty()
   description: string;
   @IsBoolean()
+  @IsNotEmpty()
   done: boolean;
   @IsInt()
   userId: number;
