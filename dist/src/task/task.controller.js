@@ -24,8 +24,8 @@ let TaskController = class TaskController {
     create(createTaskDto) {
         return this.taskService.create(createTaskDto);
     }
-    findAll() {
-        return this.taskService.findAll();
+    findAll(id) {
+        return this.taskService.findAll(+id);
     }
     findOne(id) {
         return this.taskService.findOne(+id);
@@ -45,9 +45,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TaskController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], TaskController.prototype, "findAll", null);
 __decorate([
@@ -73,7 +74,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TaskController.prototype, "remove", null);
 TaskController = __decorate([
-    (0, common_1.Controller)('task'),
+    (0, common_1.Controller)('tasks'),
     __metadata("design:paramtypes", [task_service_1.TaskService])
 ], TaskController);
 exports.TaskController = TaskController;

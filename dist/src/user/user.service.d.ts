@@ -5,25 +5,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export declare class UserService {
     private readonly prisma;
     constructor(prisma: PrismaService);
-    private readonly _include;
-    create(dto: CreateUserDto): Prisma.Prisma__UserClient<import(".prisma/client").User & {
-        tasks: {
-            description: string;
-            id: number;
-        }[];
-    }>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").User & {
-        tasks: {
-            description: string;
-            id: number;
-        }[];
-    })[]>;
+    create(dto: CreateUserDto): Prisma.Prisma__UserClient<import(".prisma/client").User>;
+    findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").User[]>;
     findOne(id: number): Prisma.Prisma__UserClient<import(".prisma/client").User>;
-    update(id: number, dto: UpdateUserDto): Prisma.Prisma__UserClient<import(".prisma/client").User & {
-        tasks: {
-            description: string;
-            id: number;
-        }[];
-    }>;
+    update(id: number, dto: UpdateUserDto): Prisma.Prisma__UserClient<import(".prisma/client").User>;
     remove(id: number): Prisma.Prisma__UserClient<import(".prisma/client").User>;
 }

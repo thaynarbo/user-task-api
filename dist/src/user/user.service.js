@@ -15,28 +15,15 @@ const prisma_service_1 = require("../../prisma.service");
 let UserService = class UserService {
     constructor(prisma) {
         this.prisma = prisma;
-        this._include = {
-            tasks: {
-                select: {
-                    id: true,
-                    description: true,
-                },
-            },
-        };
     }
     create(dto) {
-        const data = Object.assign(Object.assign({}, dto), { tasks: {
-                create: dto.tasks,
-            } });
+        const data = Object.assign({}, dto);
         return this.prisma.user.create({
             data,
-            include: this._include,
         });
     }
     findAll() {
-        return this.prisma.user.findMany({
-            include: this._include,
-        });
+        return this.prisma.user.findMany({});
     }
     findOne(id) {
         return this.prisma.user.findUnique({
@@ -44,13 +31,10 @@ let UserService = class UserService {
         });
     }
     update(id, dto) {
-        const data = Object.assign(Object.assign({}, dto), { tasks: {
-                create: dto.tasks,
-            } });
+        const data = Object.assign({}, dto);
         return this.prisma.user.update({
             where: { id },
             data,
-            include: this._include,
         });
     }
     remove(id) {

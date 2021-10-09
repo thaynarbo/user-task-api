@@ -19,8 +19,8 @@ let TaskService = class TaskService {
     create(data) {
         return this.prisma.task.create({ data });
     }
-    findAll() {
-        return this.prisma.task.findMany();
+    findAll(id) {
+        return this.prisma.task.findMany({ where: { userId: id } });
     }
     findOne(id) {
         return this.prisma.task.findUnique({ where: { id } });

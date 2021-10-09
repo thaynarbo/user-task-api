@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserDto = void 0;
-const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const create_task_dto_1 = require("../../task/dto/create-task.dto");
 class CreateUserDto {
@@ -21,12 +20,5 @@ __decorate([
     (0, class_validator_1.Length)(1, 40),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.ValidateNested)({ each: true }),
-    (0, class_transformer_1.Type)(() => create_task_dto_1.CreateTaskDto),
-    (0, class_validator_1.IsArray)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Array)
-], CreateUserDto.prototype, "tasks", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

@@ -10,8 +10,8 @@ export class TaskService {
     return this.prisma.task.create({ data });
   }
 
-  findAll() {
-    return this.prisma.task.findMany();
+  findAll(id: number) {
+    return this.prisma.task.findMany({ where: { userId: id } });
   }
 
   findOne(id: number) {
